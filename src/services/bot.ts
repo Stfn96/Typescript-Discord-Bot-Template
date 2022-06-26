@@ -28,5 +28,19 @@ export class Bot{
                 }
             }
         });
+
+        await this.Discord.createMessageEvent("pee", "poo");
+    }
+
+    async test(){
+        await this.sleep(2000);
+        console.log("Bot::test() executed");
+
+        const channels: any = await this.Discord.getChannelNameById("916078295160873000");
+        console.log(channels);
+    }
+
+    private async sleep(number: number) {
+        return new Promise(resolve => setTimeout(resolve, number));
     }
 }

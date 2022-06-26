@@ -13,6 +13,7 @@ export async function bootstrap(){
 
     console.log("Initializing services..");
     const discordObject: any = {
+        prefix: process.env.COMMAND_PREFIX || "$",
         token: process.env.CLIENT_TOKEN,
         intents: ["GUILDS", "GUILD_MEMBERS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "DIRECT_MESSAGES", "DIRECT_MESSAGE_REACTIONS"],
     };
@@ -21,7 +22,8 @@ export async function bootstrap(){
     console.log("Starting Bot..");
     services.bot = await new Bot(services.discord);
     await services.bot.assignCommands();
-    await services.discord.start(() => {
-        // Bot initialzied and ready to go!
-    });
+    await services.discord.start();
+
+    // TESTING
+    await services.bot.test();
 }
